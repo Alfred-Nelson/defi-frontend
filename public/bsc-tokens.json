@@ -1,0 +1,42 @@
+[
+    {
+        "name": "BinaryX",
+        "ticker": "BNX",
+        "icon": "/assets/binaryx_bnx.png"
+    },
+    {
+        "name": "Binance coin",
+        "ticker": "BNB",
+        "icon": "/assets/bnb.png"
+    },
+    {
+        "name": "Filecoin",
+        "ticker": "FIL",
+        "icon": "/assets/filecoin_fil.png"
+    },
+    {
+        "name": "Galxe",
+        "ticker": "GAL",
+        "icon": "/assets/galxe_gal.png"
+    },
+    {
+        "name": "Linear",
+        "ticker": "LINA",
+        "icon": "/assets/linear_lina.png"
+    },
+    {
+        "name": "Mobox",
+        "ticker": "MBOX",
+        "icon": "/assets/mobox.jpeg"
+    },
+    {
+        "name": "Multiversx",
+        "ticker": "EGLD",
+        "icon": "/assets/multiversx_egld.jpeg"
+    },
+    {
+        "name": "Pancake Swap",
+        "ticker": "CAKE",
+        "icon": "/assets/pancakeswap_cake.png"
+    }
+]
