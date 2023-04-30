@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 
 const Header = () => {
   return (
-    <header className="bg-primary-bg text-lg px-4 flex justify-between">
+    <header className="bg-primary-bg text-lg px-4 flex justify-between items-center">
       <Link
         to="/"
         className="animated-gradient text-clip w-fit flex gap-x-2 items-center text-3xl"
@@ -39,7 +39,7 @@ const Header = () => {
           </NavLink>
         ))}
       </nav>
-      <button className="animated-gradient px-4 font-semibold rounded-full ">
+      <button className="animated-gradient px-4 font-semibold rounded-full h-fit py-2">
         Connect wallet
       </button>
     </header>
