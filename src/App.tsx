@@ -1,10 +1,21 @@
-function App() {
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Header from "./components/Header";
+import NavigationOutlet from "./NavigationOutlet";
 
+function App() {
   return (
-    <div className="w-full h-[100svh] flex justify-center items-center">
-      Welcome to Relative.fi Trending Assets page
-    </div>
-  )
+    <BrowserRouter>
+      <Routes>
+        <Route element={<NavigationOutlet />}>
+          <Route path="/trade" element={<div></div>} />
+          <Route path="/earn" element={<div></div>} />
+          <Route path="/support" element={<div></div>} />
+          <Route path="/about" element={<div></div>} />
+          <Route path="/*" element={<div></div>} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;

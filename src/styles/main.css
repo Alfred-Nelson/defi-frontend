@@ -1,0 +1,44 @@
+.animated-gradient {
+    background: linear-gradient(94.37deg, #3387D5 15%, #7A06C9 20%, #3387D5 50%, #3387D5 60%, #7A06C9 80%, #3387D5 85%);
+  background-size: 400% auto;
+  animation: textShine 2s ease-in-out infinite alternate;
+}
+
+.text-clip {
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-fill-color: transparent;
+}
+
+.logo {
+    background: #0B0819;
+}
+
+.logo::after {
+    content: "";
+    background: linear-gradient(94.37deg, #3387D5 15%, #7A06C9 20%, #3387D5 60%, #7A06C9 80%, #3387D5 85%);
+    -webkit-mask-image: url("../assets/svg/logo.svg");
+    mask-image: url("../assets/svg/logo.svg");
+    mask-size: 60%;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    mask-repeat: no-repeat;
+    position: absolute;
+    top: 0;
+    mask-position: center;
+    background-size: 400% auto;
+    animation: textShine 2s ease-in-out infinite alternate;
+}
+
+@keyframes textShine {
+  0% {
+    background-position: 0% 100%;
+  }
+  100% {
+    background-position: 100% 0%;
+  }
+}
