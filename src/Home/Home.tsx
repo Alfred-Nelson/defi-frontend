@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useRecoilState, useSetRecoilState } from "recoil";
+import Card from "../components/Card";
 import Loading from "../components/Loading";
 import { AllTokenAtom, SelectedTokenAtom } from "../utils/atoms";
 
@@ -11,7 +12,7 @@ const Home = () => {
   const fetchAllTokens = async () => {
     const { data: tokens } = await axios.get("/bsc-tokens.json");
     setAllTokens(tokens);
-    setSelectedToken(tokens[0]);
+    setSelectedToken(tokens[7]);
   };
 
   useEffect(() => {
@@ -24,11 +25,7 @@ const Home = () => {
 
   return (
     <div className="w-full h-full flex justify-center items-center">
-      <img
-        src={selectedToken.icon}
-        alt={selectedToken.name}
-        className="rounded-full w-16 h-16"
-      />
+      <Card />
     </div>
   );
 };

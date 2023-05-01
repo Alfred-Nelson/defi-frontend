@@ -1,12 +1,15 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
-import "../styles/main.css";
+import "../styles/header.css";
+import "../styles/common.css";
 import { navItems } from "../utils/navItems";
 import { motion } from "framer-motion";
 
 const Header = () => {
   return (
     <header className="bg-primary-bg text-lg px-4 flex justify-between items-center">
+
+      {/* Main icon */}
       <Link
         to="/"
         className="animated-gradient text-clip w-fit flex gap-x-2 items-center text-3xl"
@@ -14,6 +17,8 @@ const Header = () => {
         <div className="logo w-12 h-12 after:bg-white relative"></div>
         <a className="font-bold">NeoFi</a>
       </Link>
+
+      {/* Main navigation */}
       <nav className="flex justify-center items-center gap-x-4">
         {navItems.map((item) => (
           <NavLink
@@ -39,6 +44,8 @@ const Header = () => {
           </NavLink>
         ))}
       </nav>
+
+      {/* Action button */}
       <button className="animated-gradient px-4 font-semibold rounded-full h-fit py-2">
         Connect wallet
       </button>

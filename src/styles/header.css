@@ -1,17 +1,3 @@
-.animated-gradient {
-  background: linear-gradient(
-    130deg,
-    #3387d5 15%,
-    #7a06c9 20%,
-    #3387d5 50%,
-    #3387d5 60%,
-    #7a06c9 80%,
-    #3387d5 85%
-  );
-  background-size: 900% auto;
-  animation: textShine 3s ease-in-out infinite alternate;
-}
-
 .text-clip {
   -webkit-background-clip: text;
   background-clip: text;
