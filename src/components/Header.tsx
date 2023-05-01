@@ -24,14 +24,14 @@ const Header = () => {
               <>
                 <motion.p
                   whileHover={{ scale: isActive ? 1 : 1.05 }}
-                  className={`${isActive && "text-white font-medium"}`}
+                  className={`${isActive && "text-primary font-medium"}`}
                 >
                   {item.name}
                 </motion.p>
                 {isActive && (
                   <motion.div
                     layoutId="active-line"
-                    className="absolute -bottom-0.5 w-full h-1 bg-white"
+                    className="absolute -bottom-0.5 w-full h-1 bg-primary"
                   />
                 )}
               </>
