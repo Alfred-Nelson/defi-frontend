@@ -16,7 +16,7 @@ const Card = () => {
   return (
     <CardContainer>
       {/* current value section */}
-      <div className="flex justify-between items-center">
+      <div className="flex flex-col md:flex-row justify-between items-center">
         <p className="font-extralight text-grey">Current value</p>
         <p className="text-2xl font-semibold text-primary">₹{price}</p>
       </div>
@@ -29,7 +29,8 @@ const Card = () => {
             alt={"bsc token icon"}
             className="w-8 h-8 rounded-full"
           />
-          {name}
+          <p className="hidden sm:flex">{name}</p>
+          <p className="flex sm:hidden">{ticker}</p>
         </div>
         <DownIcon />
       </button>
@@ -52,7 +53,7 @@ const Card = () => {
           Estimate Number of {ticker} You will Get
         </p>
         <div className="mt-5 bg-navy-blue py-2.5 px-6 rounded-xl text-grey-2 text-2xl font-medium flex justify-between items-center">
-          {(Number(investAmount) / Number(price) || 0.00).toFixed(2)}
+          {Number(price) ? (Number(investAmount) / Number(price)).toFixed(2) : "0.00"}
         </div>
       </div>
 
