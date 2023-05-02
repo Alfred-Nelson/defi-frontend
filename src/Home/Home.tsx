@@ -61,7 +61,7 @@ const Home = () => {
               placeholder="Search token"
             />
             <div className="mt-8 h-[41vh] overflow-y-auto">
-              {filteredData.map((each) => (
+              {filteredData.length ? filteredData.map((each) => (
                 <button
                   onClick={() => {
                     setSelectedToken(each)
@@ -80,7 +80,11 @@ const Home = () => {
                   </div>
                   {selectedToken.ticker === each.ticker && <TickIcon />}
                 </button>
-              ))}
+              )) : (
+                <div className="w-full h-full flex justify-center items-center text-secondary pb-[5vh] text-lg font-semibold">
+                  No Tokens
+                </div>
+              )}
             </div>
           </Modal>
         )}
