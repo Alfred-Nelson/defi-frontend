@@ -56,11 +56,11 @@ const Home = () => {
             <InputField
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="text-base font-medium text-white dark:text-white"
+              className="text-[14px] font-medium text-white py-3 dark:text-white"
               leftElement={<SearchIcon />}
               placeholder="Search token"
             />
-            <div className="mt-8 h-[41vh] overflow-y-auto">
+            <div className="mt-6 h-[40vh] overflow-y-auto">
               {filteredData.length ? filteredData.map((each) => (
                 <button
                   onClick={() => {
@@ -70,7 +70,7 @@ const Home = () => {
                   className="w-full py-5 px-3 list-none flex items-center justify-between hover:bg-[#1B192D] rounded-md transition ease-in-out"
                   key={each.ticker}
                 >
-                  <div className="flex items-center gap-x-4">
+                  <div className="flex items-center gap-x-4 text-sm">
                     <img
                       src={each.icon}
                       alt="token icon"

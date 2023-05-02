@@ -21,27 +21,27 @@ const Card = ({ setOpenSearch }: CardPropType) => {
     <CardContainer>
       {/* current value section */}
       <div className="flex flex-col md:flex-row justify-between items-center">
-        <p className="font-extralight text-grey">Current value</p>
-        <p className="text-2xl font-semibold text-primary">₹{price}</p>
+        <p className="font-extralight text-xs text-grey">Current value</p>
+        <p className="text-xl font-semibold text-primary">₹{price}</p>
       </div>
 
       {/* selected token section */}
-      <button onClick={() => setOpenSearch(true)} className="w-full mt-5 bg-navy-blue py-3 px-6 rounded-xl flex justify-between items-center">
-        <div className="flex items-center gap-x-4 font-light">
+      <button onClick={() => setOpenSearch(true)} className="w-full mt-5 bg-navy-blue py-2 px-6 rounded-xl flex justify-between items-center">
+        <div className="flex items-center gap-x-[1vw] font-light">
           <img
             src={icon}
             alt={"bsc token icon"}
-            className="w-8 h-8 rounded-full"
+            className="w-7 h-7 rounded-full"
           />
-          <p className="hidden sm:flex">{name}</p>
-          <p className="flex sm:hidden">{ticker}</p>
+          <p className="hidden sm:flex text-sm">{name}</p>
+          <p className="flex sm:hidden text-sm">{ticker}</p>
         </div>
         <DownIcon />
       </button>
 
       {/* section to specify amount */}
-      <div className="mt-12">
-        <p className="font-extralight mb-5 ml-1 text-sm">
+      <div className="mt-8">
+        <p className="font-extralight mb-3 ml-1 text-xs">
           Amount you want to invest
         </p>
         <InputField
@@ -53,17 +53,17 @@ const Card = ({ setOpenSearch }: CardPropType) => {
       </div>
 
       {/* section to show estimate count */}
-      <div className="mt-12">
+      <div className="mt-8">
         <p className="font-extralight mb-3 ml-1 text-sm">
           Estimate Number of {ticker} You will Get
         </p>
-        <div className="mt-5 bg-navy-blue py-2.5 px-8 rounded-xl text-grey-2 text-2xl font-medium flex justify-between items-center">
+        <div className="mt-3 bg-navy-blue py-2.5 px-8 rounded-xl text-grey-2 text-xl font-medium flex justify-between items-center">
           {Number(price) ? (Number(investAmount) / Number(price)).toFixed(2) : "0.00"}
         </div>
       </div>
 
       {/* Action section */}
-      <button className="mt-14 w-full animated-gradient text-xl font-medium py-3 rounded-full">
+      <button className="mt-10 w-full animated-gradient text-xl font-medium py-2 rounded-full">
         Buy
       </button>
     </CardContainer>

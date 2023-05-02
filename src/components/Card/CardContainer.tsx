@@ -11,7 +11,7 @@ const CardContainer = ({ children }: CardContainerPropType) => {
   const { icon } = useRecoilValue(SelectedTokenAtom) || {};
 
   return (
-    <div className="relative flex flex-col items-center w-[80vw] md:w-[60vw] lg:w-[45vw] xl:w-[30vw] pb-[10vh] pt-[4vh] xl:pt-[8vh]">
+    <div className="relative flex flex-col items-center w-[80vw] md:w-[60vw] lg:w-[45vw] xl:w-[30vw] py-[4vh]">
       
       {/* Icon section with curved sides */}
       <div className="flex items-end relative top-[12px] w-full px-[1px]">
@@ -20,14 +20,14 @@ const CardContainer = ({ children }: CardContainerPropType) => {
         <div
           style={{
             background:
-              "linear-gradient(to bottom, #000000 46%, #46425E 94%, #46425E 100%)",
+              "linear-gradient(to bottom, #000000 40%, #46425E 94%, #46425E 100%)",
           }}
-          className="relative top-[16px] z-20 h-[86px] w-[86px] min-w-[86px] rounded-full flex justify-center items-center"
+          className="relative top-[13px] z-20 h-[76px] w-[76px] min-w-[76px] rounded-full flex justify-center items-center"
         >
           <img
             src={icon}
             alt={"bsc token icon"}
-            className="icon w-[63px] h-[63px] rounded-full object-contain"
+            className="icon w-[53px] h-[53px] rounded-full object-contain"
           />
         </div>
 
@@ -42,7 +42,7 @@ const CardContainer = ({ children }: CardContainerPropType) => {
         }}
         className="px-[1px] w-full"
       >
-        <div className="relative z-10 rounded-b-3xl bg-primary-bg min-h-[30vh] w-full pt-16 px-10 pb-10">
+        <div className="relative z-10 rounded-b-3xl bg-primary-bg min-h-[30vh] w-full pt-12 px-10 pb-10">
           {children}
         </div>
       </div>
