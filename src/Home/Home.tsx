@@ -18,6 +18,7 @@ const Home = () => {
   const [selectedToken, setSelectedToken] = useRecoilState(SelectedTokenAtom);
 
   const fetchAllTokens = async () => {
+    console.log("Hellooooooo")
     const { data: tokens } = await axios.get("/bsc-tokens.json");
     setAllTokens(tokens);
     setSelectedToken(tokens[0]);

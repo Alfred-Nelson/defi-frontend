@@ -1,12 +1,13 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 import { useRecoilValue } from "recoil";
 import { SelectedTokenAtom } from "../utils/atoms";
 import { convertToINR } from "../utils/helperFunctions";
 
 const useBscTrade = () => {
   const [price, setPrice] = useState("0.00");
-  const { ticker, id } = useRecoilValue(SelectedTokenAtom) || {};
+  const { ticker, id, name } = useRecoilValue(SelectedTokenAtom) || {};
 
   /**
    * fetching the api after a successful connection to stream.
@@ -42,6 +43,7 @@ const useBscTrade = () => {
      */
     ws.onopen = () => {
       setPrice("0.00");
+      toast.success(`Successfully connected to ${name} trade stream`)
       fetchPrice();
       ws.send(JSON.stringify(subReq));
     };
