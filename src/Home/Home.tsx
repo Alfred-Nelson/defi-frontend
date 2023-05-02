@@ -56,7 +56,7 @@ const Home = () => {
             <InputField
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="text-[14px] font-medium text-white py-3 dark:text-white"
+              className="font-medium text-white py-3 dark:text-white"
               leftElement={<SearchIcon />}
               placeholder="Search token"
             />

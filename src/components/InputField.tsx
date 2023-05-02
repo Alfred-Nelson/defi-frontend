@@ -50,7 +50,9 @@ const InputField = ({
             props.onChange?.(e);
           }
         }}
-        className={`${className} py-2 outline-none w-full bg-transparent px-2 text-xl font-medium`}
+        className={`${className} py-2 outline-none w-full bg-transparent px-2 ${
+          className ? "text-sm" : "text-xl"
+        } font-medium `}
         {...props}
       />
       {rightElement}
