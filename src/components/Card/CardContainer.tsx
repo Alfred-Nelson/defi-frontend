@@ -11,7 +11,7 @@ const CardContainer = ({ children }: CardContainerPropType) => {
   const { icon } = useRecoilValue(SelectedTokenAtom) || {};
 
   return (
-    <div className="relative flex flex-col items-center w-[30vw] pb-[10vh]">
+    <div className="relative flex flex-col items-center w-[30vw] py-[10vh]">
       
       {/* Icon section with curved sides */}
       <div className="flex items-end relative top-[12px] w-full px-[1px]">

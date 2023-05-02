@@ -6,17 +6,19 @@ import { validateNumber } from "../../utils/validations";
 import InputField from "../InputField";
 import CardContainer from "./CardContainer";
 import "../../styles/common.css";
+import useBscTrade from "../../hooks/useBscTrade";
 
 const Card = () => {
   const [investAmount, setInvestAmount] = useState("");
   const { name, ticker, icon } = useRecoilValue(SelectedTokenAtom) || {};
+  const price = useBscTrade();
 
   return (
     <CardContainer>
       {/* current value section */}
       <div className="flex justify-between items-center">
         <p className="font-extralight text-grey">Current value</p>
-        <p className="text-2xl font-semibold text-primary">₹24882</p>
+        <p className="text-2xl font-semibold text-primary">₹{price}</p>
       </div>
 
       {/* selected token section */}
@@ -50,7 +52,7 @@ const Card = () => {
           Estimate Number of {ticker} You will Get
         </p>
         <div className="mt-5 bg-navy-blue py-2.5 px-6 rounded-xl text-grey-2 text-2xl font-medium flex justify-between items-center">
-          0.00
+          {(Number(investAmount) / Number(price) || 0.00).toFixed(2)}
         </div>
       </div>
 
