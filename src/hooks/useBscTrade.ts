@@ -1,54 +1,78 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
 import { SelectedTokenAtom } from "../utils/atoms";
+import { convertToINR } from "../utils/helperFunctions";
 
 const useBscTrade = () => {
-  const [price, setPrice] = useState("0");
-  const { ticker } = useRecoilValue(SelectedTokenAtom) || {};
+  const [price, setPrice] = useState("0.00");
+  const { ticker, id } = useRecoilValue(SelectedTokenAtom) || {};
 
-  const convertToINR = (data: string) => {
-    const inr = (Number(data) || 0) * 80;
-    const inrRound = inr.toFixed(2);
-    return inrRound;
-  };
+  /**
+   * fetching the api after a successful connection to stream.
+   * for certain stream of ticker the trade happens slowly
+   * hence the price remains at 0 for a long time.
+   * so we fetch it and show it initially.
+   */
+  const fetchPrice = async () => {
+    const params = { symbol: `${ticker}USDT` }
+    const { data: response } = await axios.get(`https://api.binance.com/api/v3/ticker/price`, { params })
+    setPrice(convertToINR(response.price));
+  }
 
   useEffect(() => {
     if (!ticker) return;
+    setPrice("0.00")
+
     const ws = new WebSocket(`wss://stream.binance.com:9443/ws`);
     const subReq = {
       method: "SUBSCRIBE",
       params: [`${ticker.toLowerCase()}usdt@trade`],
-      id: 1,
+      id,
     };
 
     const unsubReq = {
       method: "UNSUBSCRIBE",
       params: [`${ticker.toLowerCase()}usdt@trade`],
-      id: 1,
+      id,
     };
 
     /**
      * subscribes to trade stream
      */
-    ws.onopen = () => ws.send(JSON.stringify(subReq));
+    ws.onopen = () => {
+      setPrice("0.00");
+      fetchPrice();
+      ws.send(JSON.stringify(subReq));
+    };
 
     /**
      * set price from trade stream
      */
     ws.onmessage = (e) => {
       const data = JSON.parse(e.data);
+      if(!data.p) return;
       setPrice(convertToINR(data.p));
     };
+
+    /**
+     * shows error in stream
+     */
+    ws.onerror = (e) => {
+      console.log("has error", e)
+      setPrice("0.00")
+    }
 
     /**
      * unsubscribes to trade stream
      */
     ws.onclose = () => {
-      console.log("Hooyyyy");
       ws.send(JSON.stringify(unsubReq));
     };
 
-    return () => ws.close();
+    return () => {
+      ws.close();
+    };
   }, [ticker]);
 
   return price;

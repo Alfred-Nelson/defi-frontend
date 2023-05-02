@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { Dispatch, SetStateAction, useState } from "react";
 import { useRecoilValue } from "recoil";
 import DownIcon from "../../assets/DownIcon";
 import { SelectedTokenAtom } from "../../utils/atoms";
@@ -8,7 +8,11 @@ import CardContainer from "./CardContainer";
 import "../../styles/common.css";
 import useBscTrade from "../../hooks/useBscTrade";
 
-const Card = () => {
+type CardPropType = {
+  setOpenSearch: Dispatch<SetStateAction<boolean>>
+}
+
+const Card = ({ setOpenSearch }: CardPropType) => {
   const [investAmount, setInvestAmount] = useState("");
   const { name, ticker, icon } = useRecoilValue(SelectedTokenAtom) || {};
   const price = useBscTrade();
@@ -22,7 +26,7 @@ const Card = () => {
       </div>
 
       {/* selected token section */}
-      <button className="w-full mt-5 bg-navy-blue py-3 px-6 rounded-xl flex justify-between items-center">
+      <button onClick={() => setOpenSearch(true)} className="w-full mt-5 bg-navy-blue py-3 px-6 rounded-xl flex justify-between items-center">
         <div className="flex items-center gap-x-4 font-light">
           <img
             src={icon}
@@ -41,6 +45,7 @@ const Card = () => {
           Amount you want to invest
         </p>
         <InputField
+          rightElement={<p className="font-extralight">INR</p>}
           value={investAmount}
           validation={validateNumber}
           setter={(value) => setInvestAmount(value)}
@@ -52,7 +57,7 @@ const Card = () => {
         <p className="font-extralight mb-3 ml-1 text-sm">
           Estimate Number of {ticker} You will Get
         </p>
-        <div className="mt-5 bg-navy-blue py-2.5 px-6 rounded-xl text-grey-2 text-2xl font-medium flex justify-between items-center">
+        <div className="mt-5 bg-navy-blue py-2.5 px-8 rounded-xl text-grey-2 text-2xl font-medium flex justify-between items-center">
           {Number(price) ? (Number(investAmount) / Number(price)).toFixed(2) : "0.00"}
         </div>
       </div>

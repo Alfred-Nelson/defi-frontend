@@ -11,7 +11,7 @@ const Header = () => {
     initial={{ y: "-200%" }}
     animate={{ y: 0 }}
     transition={{ duration: 0.4 }}
-    className="bg-primary-bg sticky top-0 z-50 text-lg px-4 pt-4 md:pt-0 flex flex-wrap md:flex-nowrap justify-between gap-y-5 items-center">
+    className="bg-primary-bg sticky top-0 z-30 text-lg px-4 pt-4 md:pt-0 flex flex-wrap md:flex-nowrap justify-between gap-y-5 items-center">
       {/* Main icon */}
       <Link
         to="/"
